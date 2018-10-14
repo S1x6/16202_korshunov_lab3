@@ -1,3 +1,5 @@
+package main;
+
 import server.Server;
 
 import java.io.IOException;

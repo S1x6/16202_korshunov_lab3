@@ -1,25 +1,49 @@
 package server;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 public class Message implements Serializable {
-    private int guid;
+
+    public MsgType getType() {
+        return type;
+    }
+
+    public void setType(MsgType type) {
+        this.type = type;
+    }
+
+    public enum MsgType {
+        REGISTER,
+        TEXT,
+        CONFIRMATION
+    }
+
+    private UUID uuid;
     private String text;
     private String senderName;
-    private boolean confirmed = false;
+    private MsgType type;
 
-    public Message(int guid, String text, String senderName) {
-        this.guid = guid;
+    public Message(UUID uuid, String text, String senderName, MsgType type) {
+        this.uuid = uuid;
         this.text = text;
         this.senderName = senderName;
+        this.type = type;
     }
 
-    public int getGuid() {
-        return guid;
+    public Message(Message msg) {
+        this.uuid = msg.uuid;
+        this.text = msg.text;
+        this.senderName = msg.senderName;
+        this.type = msg.type;
     }
 
-    public void setGuid(int guid) {
-        this.guid = guid;
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
     }
 
     public String getText() {
@@ -38,11 +62,5 @@ public class Message implements Serializable {
         this.senderName = senderName;
     }
 
-    public boolean isConfirmed() {
-        return confirmed;
-    }
 
-    public void setConfirmed(boolean confirmed) {
-        this.confirmed = confirmed;
-    }
 }
