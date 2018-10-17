@@ -62,5 +62,8 @@ public class Message implements Serializable {
         this.senderName = senderName;
     }
 
-
+    @Override
+    public String toString() {
+        return "UUID: " + uuid.toString() +". Text: " + text + ". Sender: " + senderName + ". Type: " + type.toString();
+    }
 }

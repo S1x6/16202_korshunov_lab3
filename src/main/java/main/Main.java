@@ -31,8 +31,8 @@ public class Main {
             Server server = null;
             try {
                 server = (parentIp != null && parentPort != null)
-                        ? new Server(name, selfPort, lossPercentage)
-                        : new Server(name, selfPort, lossPercentage, parentIp, parentPort);
+                        ? new Server(name, selfPort, lossPercentage, parentIp, parentPort)
+                        : new Server(name, selfPort, lossPercentage);
             } catch (IOException ex) {
                 ex.printStackTrace();
                 handleError();
